@@ -1,6 +1,7 @@
 const router = require('express').Router()
-const UploadController = require('../controllers/upload.controller')
+const ImageController = require('../controllers/image.controller')
+const ImageUploader = require("../middleware/multer");
 
-router.post('/upload', UploadController.index)
+router.post('/upload', ImageUploader.single("image"), ImageController.uploadImage)
 
 module.exports = router
