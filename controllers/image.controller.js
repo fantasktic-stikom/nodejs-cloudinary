@@ -3,6 +3,7 @@ const cloudinary = require('../plugin/cloudinary')
 class ImageController {
     constructor(){}
 
+    // UPLOAD IMAGE
     async uploadImage(req, res) {
         try {
             
@@ -32,6 +33,34 @@ class ImageController {
                 });
             }
       
+
+        } catch (error) {
+            return res.status(400).json({
+                'success': false,
+                'message': error.message
+            });
+        }
+    }
+
+    // GET IMAGE
+    async getImage(req, res) {
+        try {
+            const publicId = req.params.publicId
+            
+            cloudinary.v2.api.resource(publicId, function(error, result) {
+                if(error) {
+                    return res.status(400).json({
+                        'success': false,
+                        'message': 'Error getting image'
+                    });
+                }
+
+                return res.json({
+                    'success': true,
+                    'message': 'Success getting image',
+                    'data': result
+                });
+            });
 
         } catch (error) {
             return res.status(400).json({
