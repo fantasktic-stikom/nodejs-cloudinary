@@ -8,5 +8,11 @@
   },
   "keywords": [],
   "author": "ryanadhitama",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cloudinary": "^1.26.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "streamifier": "^0.1.1"
+  }
 }
